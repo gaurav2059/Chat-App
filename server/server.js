@@ -58,7 +58,13 @@ app.get("/", (req, res) => {
 });
 //connect to mongodb
 await connectDB();
+
+if(process.env.NODE_ENV !== "production"){
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server is running at http://localhost:${PORT}`);
 });
+}
+
+//Export server for versel
+export default server;
